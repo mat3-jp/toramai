@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>虎米2026 — CRYINGTIGER JAPANのお米</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ochre:#E2A72E;
+    --ochre-deep:#C4851C;
+    --sumi:#2A2420;
+    --washi:#FBFAF5;
+    --straw:#EFE6CF;
+    --shu:#B8432F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--washi);color:var(--sumi);font-family:"Zen Kaku Gothic New",sans-serif;font-size:16px;line-height:1.9;letter-spacing:.04em}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;background:var(--ochre);overflow:hidden;display:flex;align-items:center;justify-content:flex-start;padding:8vh 7vw}
+  .stripes{position:absolute;inset:0;width:100%;height:100%}
+  .stripes path{fill:var(--sumi)}
+  .title{position:relative;display:flex;align-items:flex-start;gap:.08em;writing-mode:vertical-rl;font-family:"Yuji Syuku",serif;font-size:clamp(132px,34vw,300px);line-height:1;color:var(--sumi);letter-spacing:.02em}
+  .yr{font-family:"Shippori Mincho",serif;font-weight:700;font-size:.17em;letter-spacing:.25em;margin-top:.35em}
+  .hero-note{position:absolute;left:7vw;bottom:6vh;font-family:"Shippori Mincho",serif;font-size:15px;line-height:1.7;color:var(--sumi);background:var(--ochre);padding:.2em .4em .2em 0}
+  .seal{position:absolute;right:7vw;bottom:6vh;width:64px;height:64px;border:3px solid var(--shu);color:var(--shu);font-family:"Shippori Mincho",serif;font-weight:700;font-size:15px;line-height:1.15;display:grid;place-items:center;text-align:center;background:var(--ochre);transform:rotate(-4deg)}
+
+  section{max-width:640px;margin:0 auto;padding:88px 7vw}
+  h2{font-family:"Shippori Mincho",serif;font-weight:700;font-size:26px;line-height:1.5;margin-bottom:28px}
+
+  /* 思い: vertical */
+  .omoi{background:var(--washi)}
+  .tate-wrap{direction:rtl;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}
+  .tate{writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:18px;line-height:2.2;height:min(30em,72vh);letter-spacing:.12em;direction:ltr}
+  .tate p{margin-left:1.4em}
+  .tate .sig{margin-top:auto;font-size:15px}
+  .hint{font-size:12px;color:#7a6f63;margin-top:12px;text-align:right}
+
+  /* 品書き */
+  .card{background:var(--straw)}
+  .card-inner{max-width:640px;margin:0 auto;padding:88px 7vw}
+  dl{display:grid;grid-template-columns:7em 1fr;border-top:2px solid var(--sumi)}
+  dt,dd{padding:16px 0;border-bottom:1px solid rgba(42,36,32,.25)}
+  dt{font-weight:700;font-size:14px;padding-right:1em}
+  dd{font-size:15px}
+  dd small{display:block;font-size:12.5px;color:#6b5f52;line-height:1.7;margin-top:4px}
+
+  /* 由来 */
+  .story p{margin-bottom:1.3em}
+  .ear{display:block;width:120px;margin:0 0 28px}
+  .pull{font-family:"Shippori Mincho",serif;font-size:21px;line-height:1.8;border-left:4px solid var(--ochre);padding-left:18px;margin:36px 0}
+
+
+  .hh-sub{font-family:"Shippori Mincho",serif;font-size:16px;margin:-14px 0 36px;color:#6b5f52}
+  .story h3{font-family:"Shippori Mincho",serif;font-weight:700;font-size:19px;margin:44px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--ochre);display:inline-block}
+  .traits{display:block;border:0}
+  .traits dt{border:0;padding:16px 0 2px;font-family:"Shippori Mincho",serif;font-size:16px;color:var(--ochre-deep)}
+  .traits dd{border:0;padding:0 0 4px;font-size:15.5px}
+  /* 人の紹介 */
+  .person{background:var(--sumi);color:var(--washi)}
+  .person-inner{max-width:640px;margin:0 auto;padding:88px 7vw}
+  .person h2{color:var(--ochre)}
+  .p-role{font-size:14px;line-height:1.7;opacity:.85}
+  .p-name{font-family:"Shippori Mincho",serif;font-weight:700;font-size:40px;line-height:1.3;margin:6px 0 4px;letter-spacing:.12em}
+  .p-kana{font-size:13px;opacity:.7;letter-spacing:.2em}
+  .p-lead{font-family:"Shippori Mincho",serif;font-size:19px;line-height:1.9;margin:36px 0 40px}
+  .tl{list-style:none;border-left:2px solid var(--ochre);margin-left:6px}
+  .tl li{position:relative;padding:0 0 26px 24px}
+  .tl li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--ochre)}
+  .tl .y{font-family:"Shippori Mincho",serif;font-weight:700;font-size:17px;color:var(--ochre);display:block;line-height:1.4}
+  .tl .d{font-size:15px;line-height:1.8}
+  .p-body p{margin-top:1.2em;font-size:15.5px}
+  footer{background:#1d1916;color:var(--straw);padding:56px 7vw 64px;font-size:13px;line-height:2}
+  footer .f-title{font-family:"Yuji Syuku",serif;font-size:40px;color:var(--ochre);line-height:1.2;margin-bottom:12px}
+  footer a{color:var(--straw)}
+
+  @media (min-width:760px){
+    .title{font-size:280px}
+    .hero{padding-left:12vw}
+    .yr{font-family:"Shippori Mincho",serif;font-weight:700;font-size:.17em;letter-spacing:.25em;margin-top:.35em}
+  .hero-note{left:12vw}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .stripes path{transform-origin:right center;animation:sweep 1.1s cubic-bezier(.2,.7,.2,1) both}
+    .stripes path:nth-child(2){animation-delay:.08s}
+    .stripes path:nth-child(3){animation-delay:.16s}
+    .stripes path:nth-child(4){animation-delay:.24s}
+    .stripes path:nth-child(5){animation-delay:.32s}
+    .stripes path:nth-child(6){animation-delay:.40s}
+    @keyframes sweep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="stripes" viewBox="0 0 400 800" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <path d="M400 70 C330 78 270 92 214 120 C262 112 318 110 400 116 Z"/>
+    <path d="M400 190 C320 196 248 218 186 262 C250 240 320 236 400 244 Z"/>
+    <path d="M400 330 C340 330 290 344 240 372 C296 360 346 362 400 368 Z"/>
+    <path d="M400 452 C318 456 236 480 168 530 C240 502 320 496 400 504 Z"/>
+    <path d="M400 600 C346 602 296 616 250 640 C302 632 352 634 400 640 Z"/>
+    <path d="M400 712 C324 716 254 738 200 776 C260 756 330 752 400 758 Z"/>
+  </svg>
+  <h1 class="title">虎米<span class="yr">二〇二六</span></h1>
+  <div class="seal" aria-hidden="true">自家<br>採種</div>
+</header>
+
+<section class="omoi">
+  <h2>このお米に込めた思い</h2>
+  <div class="tate-wrap">
+    <div class="tate">
+      <p>虎米は、CRYINGTIGER JAPANの仲間と育てたお米です。</p>
+      <p>田んぼには、もともとたくさんの微生物が暮らしています。</p>
+      <p>足りないものを外から足し続けるのではなく、その土地の力を呼び起こす。バクチャーが三十五年続けてきた考え方で、今年はお米を育てました。</p>
+      <p>種は、自然農法の祖・福岡正信さんが育てた稲から、自分たちの手で採り継いだものです。</p>
+      <p>虎のように、たくましく。手に取ってくださった方の毎日の力になれたら嬉しいです。</p>
+      <p class="sig">CRYINGTIGER JAPAN</p>
+    </div>
+  </div>
+  <p class="hint">横にスクロールして読めます</p>
+</section>
+
+<div class="card">
+  <div class="card-inner">
+    <h2>このお米のこと</h2>
+    <dl>
+      <dt>名称</dt><dd>虎米2026（とらまい）</dd>
+      <dt>つくり手</dt><dd>CRYINGTIGER JAPAN</dd>
+      <dt>表示</dt><dd>うるち米<small>自家採種のため、品種名ではなく「うるち米」と表示しています。</small></dd>
+      <dt>種の由来</dt><dd>福岡正信氏が育成した稲「ハッピーヒル」</dd>
+      <dt>育てた場所</dt><dd>バクチャー田</dd>
+      <dt>年産</dt><dd>令和8年（2026年）産</dd>
+      <dt>保存</dt><dd>直射日光と湿気を避け、涼しい場所で。開封後はお早めにどうぞ。</dd>
+    </dl>
+  </div>
+</div>
+
+<section class="story">
+  <svg class="ear" viewBox="0 0 120 60" aria-hidden="true">
+    <path d="M6 54 C40 50 70 36 96 12" stroke="#2A2420" stroke-width="2" fill="none"/>
+    <g fill="#E2A72E" stroke="#2A2420" stroke-width="1.2">
+      <ellipse cx="34" cy="46" rx="6" ry="3.6" transform="rotate(-20 34 46)"/><ellipse cx="46" cy="41" rx="6" ry="3.6" transform="rotate(-25 46 41)"/><ellipse cx="57" cy="35" rx="6" ry="3.6" transform="rotate(-32 57 35)"/><ellipse cx="67" cy="29" rx="6" ry="3.6" transform="rotate(-38 67 29)"/><ellipse cx="77" cy="22" rx="6" ry="3.6" transform="rotate(-44 77 22)"/><ellipse cx="86" cy="16" rx="6" ry="3.6" transform="rotate(-48 86 16)"/><ellipse cx="44" cy="50" rx="6" ry="3.6" transform="rotate(-10 44 50)"/><ellipse cx="58" cy="44" rx="6" ry="3.6" transform="rotate(-18 58 44)"/><ellipse cx="70" cy="37" rx="6" ry="3.6" transform="rotate(-26 70 37)"/><ellipse cx="81" cy="29" rx="6" ry="3.6" transform="rotate(-34 81 29)"/>
+    </g>
+  </svg>
+  <h2>種のふるさと、ハッピーヒル</h2>
+  <p class="hh-sub">自然農法の祖・福岡正信さんが生んだ「幻のお米」</p>
+
+  <h3>福岡正信さんのこと</h3>
+  <p>1913年、愛媛県伊予市に生まれた農学者であり、農家であり、思想家です。田畑を耕さず、農薬や化学肥料に頼らない「自然農法」を、自らの農園で生涯をかけて実践しました。</p>
+  <p>1975年に出した『自然農法 わら一本の革命』は、30か国以上で翻訳され、今も世界中で読み継がれています。アジアのノーベル賞と呼ばれるマグサイサイ賞を受け、晩年は世界各地で砂漠の緑化にも取り組みました。</p>
+
+  <h3>ハッピーヒルの誕生</h3>
+  <p>戦時中、福岡さんはビルマ（現在のミャンマー）から稲を持ち帰りました。それを日本の在来種と掛け合わせて生まれたのがハッピーヒルです。</p>
+  <p class="pull">名前は、福岡さん自身から。<br>「福」はハッピー、「岡」はヒル。</p>
+
+  <h3>ほかの稲と、ここが違う</h3>
+  <dl class="traits">
+    <dt>穂のかたち</dt><dd>粟のように、もこもこと粒が密に実ります。茎が太く丈夫なので、実っても穂があまり垂れません。</dd>
+    <dt>育つ場所</dt><dd>水を張った田んぼでも、畑でも育ちます。陸稲と水稲のどちらにもなれる、珍しい性質です。</dd>
+    <dt>草の姿</dt><dd>茎が太く、葉は広く短め。どっしりとした姿で、雑草にも負けない力強さがあります。</dd>
+    <dt>味わい</dt><dd>やわらかい食感で、炊きたての玄米は香ばしい。玄米が苦手な人でも食べやすいと言われています。</dd>
+  </dl>
+
+  <h3>受け継いだ種で、私たちの田んぼへ</h3>
+  <p>私たちはハッピーヒルの種を自分たちの手で採り、バクチャー田で一年かけて育てました。自家採種のお米は品種名を名乗れないため、袋の表示は「うるち米」です。けれど、その一粒一粒には、福岡さんから続く種の記憶が詰まっています。</p>
+</section>
+
+
+<div class="person">
+  <div class="person-inner">
+    <h2>畑と人を耕す人</h2>
+    <p class="p-role">農業生産法人 株式会社カルティベイトファーム<br>代表取締役（茨城県石岡市）</p>
+    <p class="p-name">鈴木 泰幸</p>
+    <p class="p-kana">すずき やすゆき</p>
+    <p class="p-lead">「カルティベイト」は、耕すという意味。鈴木さんが耕してきたのは、畑だけではありません。</p>
+    <ol class="tl">
+      <li><span class="y">2004年</span><span class="d">茨城の若手農家7人で、農業者グループ「カルティベイト」を立ち上げる</span></li>
+      <li><span class="y">2010年</span><span class="d">株式会社カルティベイトファームを設立</span></li>
+      <li><span class="y">いま</span><span class="d">バクチャーの取り組みにもご協力いただいています</span></li>
+    </ol>
+    <div class="p-body">
+      <p>都内のファーマーズマーケットや交流会に足を運び、農場にも人を呼び込みながら、つくる人と食べる人をつないできました。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="f-title">虎米 二〇二六</p>
+  <p>CRYINGTIGER JAPAN／バクチャー田 令和8年産<br>
+  品種の情報は<a href="https://f-masanobu.jp/product/happy-hill/">福岡正信自然農園</a>の公開情報を参考にしています。</p>
+</footer>
+
+</body>
+</html>
